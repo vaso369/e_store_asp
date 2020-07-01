@@ -1,5 +1,7 @@
 ﻿using Estore.Application.Commands;
+using Estore.Application.Exceptions;
 using Estore.DataAccess;
+using Estore.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,7 +24,10 @@ namespace Estore.Implementation.Commands
         public void Execute(int request)
         {
             var user = _context.Users.Find(request);
-
+            if(user == null)
+            {
+                throw new EntityNotFoundException(request, typeof(User));
+            }
             user.IsDeleted = true;
             user.IsActive = false;
             user.DeletedAt = DateTime.Now;

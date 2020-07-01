@@ -14,9 +14,9 @@ namespace Estore.Implementation.Commands
     public class EFUpdateCategoryCommand : IUpdateCategoryCommand
     {
         private readonly EstoreContext _context;
-        private readonly CreateCategoryValidator _validator;
+        private readonly UpdateCategoryValidator _validator;
 
-        public EFUpdateCategoryCommand(EstoreContext context, CreateCategoryValidator validator)
+        public EFUpdateCategoryCommand(EstoreContext context, UpdateCategoryValidator validator)
         {
             _context = context;
             _validator = validator;
@@ -26,7 +26,7 @@ namespace Estore.Implementation.Commands
 
         public string Name => "Updating category";
 
-        public void Execute(CategoryDto request)
+        public void Execute(CategoryPutDto request)
         {
             _validator.ValidateAndThrow(request);
             var category = _context.Categories.Find(request.Id);

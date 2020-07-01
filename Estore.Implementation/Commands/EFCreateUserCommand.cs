@@ -28,21 +28,37 @@ namespace Estore.Implementation.Commands
 
         public string Name => "Creating user";
 
-        public void Execute(UserDto request)
+        public void Execute(UserPostDto request)
         {
             _validator.ValidateAndThrow(request);
-            var user = new User
+            using (var dbContextTransaction = _context.Database.BeginTransaction())
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email,
-                Pass = request.Pass,
-                PID = request.PID,
-                RoleId = 2
-            };
+                var user = new User
+                {
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
+                    Email = request.Email,
+                    Pass = request.Pass,
+                    PID = request.PID,
+                    RoleId = 2
+                };
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+                _context.Users.Add(user);
+                _context.SaveChanges();
+
+                var authUseCases = new List<int> { 13, 17, 23, 7, 6,18 };
+                foreach (var useCase in authUseCases)
+                {
+                    var useCaseRow = new UserUseCase
+                    {
+                        UserId = user.Id,
+                        UseCaseId = useCase
+                    };
+                    _context.UserUseCases.Add(useCaseRow);
+                }
+                _context.SaveChanges();
+                dbContextTransaction.Commit();
+            }
             _sender.Send(new SendEmailDto
             {
                 Content = "<h1>You are successfully registrated now!</h1>",

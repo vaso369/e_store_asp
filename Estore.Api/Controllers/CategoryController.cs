@@ -41,7 +41,7 @@ namespace Estore.Api.Controllers
 
         // PUT api/<CategoryController>/5
         [HttpPut()]
-        public void Put( [FromBody] CategoryDto dto, [FromServices] IUpdateCategoryCommand command)
+        public void Put( [FromBody] CategoryPutDto dto, [FromServices] IUpdateCategoryCommand command)
         {
             executor.ExecuteCommand(command, dto);
         }

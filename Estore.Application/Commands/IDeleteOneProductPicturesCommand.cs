@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Estore.Application.Commands
 {
-    public interface IDeleteOneProductPicturesCommand : ICommand<IEnumerable<ProductPictureDto>>
+    public interface IDeleteOneProductPicturesCommand : ICommand<IEnumerable<ProductPictureDeleteDto>>
     {
     }
 }

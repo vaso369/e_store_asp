@@ -40,14 +40,14 @@ namespace Estore.Api.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] UserDto dto, [FromServices] ICreateUserCommand command)
+        public void Post([FromBody] UserPostDto dto, [FromServices] ICreateUserCommand command)
         {
             executor.ExecuteCommand(command, dto);
 
         }
 
         [HttpPut()]
-        public void Put([FromBody] UserDto dto,[FromServices] IUpdateUserCommand command)
+        public void Put([FromBody] UserPutDto dto,[FromServices] IUpdateUserCommand command)
         {
             executor.ExecuteCommand(command, dto);
         }

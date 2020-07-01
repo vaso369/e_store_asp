@@ -28,7 +28,7 @@ namespace Estore.Implementation.Queries
 
         public string Name => "Searching roles";
 
-        public PageResponse<RoleDto> Execute(RoleSearch search)
+        public IEnumerable<RoleGetDto> Execute(RoleSearch search)
         {
             var query = context.Roles.AsQueryable();
             if(!string.IsNullOrEmpty(search.Name) || !string.IsNullOrWhiteSpace(search.Name))
@@ -49,7 +49,8 @@ namespace Estore.Implementation.Queries
             //    }).ToList()
             //};
             //return response;
-            return query.Paged<RoleDto, Role>(search, _mapper);
+            return _mapper.Map<IEnumerable<RoleGetDto>>(query);
+        
             //return query.Paged(search, x => new RoleDto
             //{
             //    Id = x.Id,

@@ -11,7 +11,7 @@ namespace Estore.Implementation.Profiles
     {
         public RoleProfile()
         {
-            CreateMap<Role, RoleDto>();
+            CreateMap<Role, RoleGetDto>();
         }
 
         

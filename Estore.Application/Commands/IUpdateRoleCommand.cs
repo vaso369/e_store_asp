@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Estore.Application.Commands
 {
-    public interface IUpdateRoleCommand : ICommand<RoleDto>
+    public interface IUpdateRoleCommand : ICommand<RolePutDto>
     {
     }
 }

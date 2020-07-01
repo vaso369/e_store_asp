@@ -11,7 +11,8 @@ namespace Estore.Implementation.Profiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDto>();
+            CreateMap<User, UserGetDto>();
+        //    CreateMap<UserPostDto, User>().ForMember(u => u.RoleId, opt => opt.) );
         }
     }
 }

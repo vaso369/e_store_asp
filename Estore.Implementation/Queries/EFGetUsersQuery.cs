@@ -28,7 +28,7 @@ namespace Estore.Implementation.Queries
 
         public string Name => "Getting all users by search";
 
-        public PageResponse<UserDto> Execute(UserSearch search)
+        public PageResponse<UserGetDto> Execute(UserSearch search)
         {
             var query = _context.Users.AsQueryable();
             if (!string.IsNullOrEmpty(search.Value) || !string.IsNullOrWhiteSpace(search.Value))
@@ -36,7 +36,7 @@ namespace Estore.Implementation.Queries
                 query = query.Where(x => x.FirstName.ToLower().Contains(search.Value.ToLower()) || x.LastName.ToLower().Contains(search.Value.ToLower()) || x.Email.ToLower().Contains(search.Value.ToLower()) || x.PID.ToString().Contains(search.Value));
             }
 
-            return query.Paged<UserDto, User>(search, _mapper);
+            return query.Paged<UserGetDto, User>(search, _mapper);
         }
     }
 }

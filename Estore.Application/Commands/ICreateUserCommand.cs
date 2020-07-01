@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Estore.Application.Commands
 {
-    public interface ICreateUserCommand : ICommand<UserDto>
+    public interface ICreateUserCommand : ICommand<UserPostDto>
     {
     }
 }

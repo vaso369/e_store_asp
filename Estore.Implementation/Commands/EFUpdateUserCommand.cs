@@ -24,7 +24,7 @@ namespace Estore.Implementation.Commands
 
         public string Name => "Updating info";
 
-        public void Execute(UserDto request)
+        public void Execute(UserPutDto request)
         {
             _validator.ValidateAndThrow(request);
             var user = _context.Users.Find(request.Id);

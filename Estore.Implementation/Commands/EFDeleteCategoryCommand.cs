@@ -1,5 +1,7 @@
 ﻿using Estore.Application.Commands;
+using Estore.Application.Exceptions;
 using Estore.DataAccess;
+using Estore.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,10 @@ namespace Estore.Implementation.Commands
         public void Execute(int request)
         {
             var category = _context.Categories.Find(request);
+            if(category == null)
+            {
+                throw new EntityNotFoundException(request, typeof(Category));
+            }
             using (var dbContextTransaction = _context.Database.BeginTransaction())
             {
                 category.IsActive = false;

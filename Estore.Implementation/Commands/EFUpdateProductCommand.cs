@@ -46,7 +46,7 @@ namespace Estore.Implementation.Commands
             {
                 product.Name = request.Name;
                 product.Description = request.Description;
-                product.Stock = request.Stock;
+                product.Stock += request.Stock;
                 product.ImagePath = pathImage;
                 _context.SaveChanges();
                 if(!_context.PriceHistory.Where(prod => prod.ProductId == request.Id).Any(price => price.Price == request.Price))

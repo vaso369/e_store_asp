@@ -33,9 +33,10 @@ namespace Estore.Implementation.Queries
 
         public PageResponse<OrderWithUserDataDto> Execute(OrderSearch search)
         {
-            var query = _context.Orders.Include(o => o.OrderLines).Include(o => o.User).AsQueryable();
+            var query = _context.Orders.AsQueryable();
+            query = query.Include(o => o.OrderLines).Include(o => o.User);
 
-            if(search.OrderDate != null)
+            if (search.OrderDate != default(DateTime))
             {
                 query = query.Where(o => o.CreatedAt.Date == search.OrderDate);
             }

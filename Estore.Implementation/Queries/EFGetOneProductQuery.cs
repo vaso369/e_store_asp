@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Estore.Application.DataTransfer;
+using Estore.Application.Exceptions;
 using Estore.Application.Queries;
 using Estore.DataAccess;
+using Estore.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,10 @@ namespace Estore.Implementation.Queries
         {
             var query = _context.Products.AsQueryable();
             query = query.Include(p => p.Pictures).Include(pr => pr.Prices).Where(p => p.Id == search);
+            if(query.Count() == 0)
+            {
+                throw new EntityNotFoundException(search, typeof(Product));
+            }
             var product = query.Select(x => new ProductDtoSearch
             {
                 Id = x.Id,

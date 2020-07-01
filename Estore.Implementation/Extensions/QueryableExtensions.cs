@@ -13,7 +13,7 @@ namespace Estore.Implementation.Extensions
         {
 
             var skipCount = search.PerPage * (search.Page - 1);
-            var broj = query.Count();
+         
             var skipped = query.Skip(skipCount).Take(search.PerPage);
             var response = new PageResponse<TDto>
             {

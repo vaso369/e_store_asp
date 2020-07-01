@@ -37,8 +37,8 @@ namespace Estore.Api.Controllers
             executor.ExecuteCommand(command, dto);
         }
 
-
-        public void Delete([FromBody] IEnumerable<ProductPictureDto> dto, [FromServices] IDeleteOneProductPicturesCommand command)
+        [HttpDelete()]
+        public void Delete([FromBody] IEnumerable<ProductPictureDeleteDto> dto, [FromServices] IDeleteOneProductPicturesCommand command)
         {
             executor.ExecuteCommand(command, dto);
         }

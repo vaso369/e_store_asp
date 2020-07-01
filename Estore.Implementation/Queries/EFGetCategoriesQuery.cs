@@ -24,7 +24,7 @@ namespace Estore.Implementation.Queries
 
         public string Name => "Getting all categories";
 
-        public IEnumerable<CategoryDto> Execute(CategoryDto search)
+        public IEnumerable<CategoryGetDto> Execute(CategoryDto search)
         {
             var categories = _context.Categories.AsQueryable();
 
@@ -32,8 +32,9 @@ namespace Estore.Implementation.Queries
             {
                 categories = categories.Where(x => x.Name.ToLower().Contains(search.Name.ToLower()));
             }
+         
 
-            return _mapper.Map<IEnumerable<CategoryDto>>(categories);
+            return _mapper.Map<IEnumerable<CategoryGetDto>>(categories);
         }
     }
 }

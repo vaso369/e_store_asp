@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Estore.Application.Queries
 {
-    public interface IGetCategoriesQuery : IQuery<CategoryDto, IEnumerable<CategoryDto>>
+    public interface IGetCategoriesQuery : IQuery<CategoryDto, IEnumerable<CategoryGetDto>>
     {
     }
 }

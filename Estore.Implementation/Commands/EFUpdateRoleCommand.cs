@@ -14,9 +14,9 @@ namespace Estore.Implementation.Commands
     public class EFUpdateRoleCommand : IUpdateRoleCommand
     {
         private readonly EstoreContext _context;
-        private readonly CreateRoleValidator _validator;
+        private readonly UpdateRoleValidator _validator;
 
-        public EFUpdateRoleCommand(EstoreContext context, CreateRoleValidator validator)
+        public EFUpdateRoleCommand(EstoreContext context, UpdateRoleValidator validator)
         {
             _context = context;
             _validator = validator;
@@ -26,7 +26,7 @@ namespace Estore.Implementation.Commands
 
         public string Name => "Updating role";
 
-        public void Execute(RoleDto request)
+        public void Execute(RolePutDto request)
         {
             _validator.ValidateAndThrow(request);
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Estore.Application.Commands
 {
-    public interface IUpdateCategoryCommand : ICommand<CategoryDto>
+    public interface IUpdateCategoryCommand : ICommand<CategoryPutDto>
     {
     }
 }

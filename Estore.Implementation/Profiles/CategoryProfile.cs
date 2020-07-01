@@ -11,7 +11,7 @@ namespace Estore.Implementation.Profiles
     {
         public CategoryProfile()
         {
-            CreateMap<Category, CategoryDto>();
+            CreateMap<Category, CategoryGetDto>();
         }
 
 

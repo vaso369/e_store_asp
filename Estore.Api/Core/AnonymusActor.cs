@@ -12,6 +12,6 @@ namespace Estore.Api.Core
 
         public string Identity => "Anonymus";
 
-        public IEnumerable<int> AllowedUseCases => new List<int> { 3 };
+        public IEnumerable<int> AllowedUseCases => new List<int> { 3,7,23,6 };
     }
 }

@@ -56,68 +56,8 @@ namespace Estore.Implementation.Queries
                 query = query.Where(p => p.Stock > 0);
             }
 
-            //var pricesTable = _context.PriceHistory;
-            //var picturesTable = _context.Pictures;
-           query = query.Include(pr => pr.Prices);
-            //   var prods = query.AsQueryable().Join(picturesTable, products => products.Id, pictures => pictures.ProductId, (products, pictures) => new { products, pictures }).Join(pricesTable, prod => prod.products.Id, price => price.ProductId, (prod, price) => new { prod, price });
-            //  if (search.PriceFrom != 0 || search.PriceTo != 0)
-            //    {
-            //if (search.PriceFrom != 0 && search.PriceTo == 0)
-            //    prods = prods.Include(p=>p.Prices).Where(p => p. >= search.PriceFrom);
-            //if (search.PriceFrom == 0 && search.PriceTo != 0)
-            //    prods = prods.Where(p => p.price.Price >= search.PriceFrom);
-            //if (search.PriceFrom != 0 && search.PriceTo != 0)
-            //    prods = prods.Where(p => p.price.Price >= search.PriceFrom && p.price.Price <= search.PriceTo);
-
-            //   }
-
-            //var query = prods.Select(x => new ProductDtoSearch
-            //{
-            //    Id = x.Id,
-            //    Name = x.Name,
-            //    Description = x.Description,
-            //    Stock = x.Stock,
-            //    ImagePathPrimary = x.ImagePath,
-            //    Images = x.Pictures.Where(pic => x.Id == pic.ProductId).Select(p => new ImageDto
-            //    {
-            //        Id = p.Id,
-            //        Path = p.ImagePath
-            //    }),
-            //    CategoryId = x.CategoryId,
-            //    Prices = x.Prices.Where(p => p.ProductId == x.Id).Select(p => new PriceDtoSearch
-            //    {
-            //        Id = p.Id,
-            //        Price = p.Price,
-            //        ProductId = p.ProductId,
-            //        CreatedAt = p.CreatedAt
-            //    }).OrderByDescending(date => date.CreatedAt).Take(2)
-            //});
-
-
-            //var skipCount = search.PerPage * (search.Page - 1);
-            //var response = new PageResponse<ProductDtoSearch>
-            //{
-            //    CurrentPage = search.Page,
-            //    ItemsPerPage = search.PerPage,
-            //    TotalCount = query.Count(),
-            //    Items = query.Skip(skipCount).Take(search.PerPage).Select(x => new ProductDtoSearch
-            //    {
-            //        Id = x.Id,
-            //        Name = x.Name,
-            //        Description = x.Description,
-            //        Stock = x.Stock,
-            //        ImagePath = x.ImagePath,
-            //        CategoryId = x.CategoryId,
-            //        Prices = x.Prices.Where(p => p.ProductId == x.Id).Select(p => new PriceDtoSearch
-            //        {
-            //            Id = p.Id,
-            //            Price = p.Price,
-            //            ProductId = p.ProductId,
-            //            CreatedAt = p.CreatedAt
-            //        }).OrderByDescending(date => date.CreatedAt).Take(2)
-            //    }).ToList()
-            //};
-            //return response;
+           
+             query = query.Include(pr => pr.Prices);
 
             return query.Paged<ProductDtoSearch, Product>(search,_mapper );
 

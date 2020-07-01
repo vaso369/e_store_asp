@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Estore.Application.Queries
 {
-    public interface IGetRolesQuery : IQuery<RoleSearch, PageResponse<RoleDto>>
+    public interface IGetRolesQuery : IQuery<RoleSearch, IEnumerable<RoleGetDto>>
     {
 
     }

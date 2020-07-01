@@ -9,8 +9,6 @@ namespace Estore.Application.Searches
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal PriceFrom { get; set; }
-        public decimal PriceTo { get; set; }
         public int CategoryId { get; set; }
         public bool Stock { get; set; }
          

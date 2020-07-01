@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Estore.Application.DataTransfer
 {
-    public class LogDtoSearch
+    public class RoleGetDto
     {
-        public string UserData { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

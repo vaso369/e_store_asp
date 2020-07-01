@@ -40,7 +40,7 @@ namespace Estore.Api.Controllers
 
         // PUT api/<RoleController>/5
         [HttpPut()]
-        public void Put([FromBody] RoleDto dto, [FromServices] IUpdateRoleCommand command)
+        public void Put([FromBody] RolePutDto dto, [FromServices] IUpdateRoleCommand command)
         {
             executor.ExecuteCommand(command, dto);
         }

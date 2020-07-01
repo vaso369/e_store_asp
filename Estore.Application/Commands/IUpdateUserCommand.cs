@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Estore.Application.Commands
 {
-    public interface IUpdateUserCommand : ICommand<UserDto>
+    public interface IUpdateUserCommand : ICommand<UserPutDto>
     {
     }
 }

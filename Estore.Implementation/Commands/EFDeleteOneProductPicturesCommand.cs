@@ -21,12 +21,12 @@ namespace Estore.Implementation.Commands
 
         public string Name => "Deleting one product pictures";
 
-        public void Execute(IEnumerable<ProductPictureDto> request)
+        public void Execute(IEnumerable<ProductPictureDeleteDto> request)
         {
             var query = _context.Pictures;
             foreach(var item in request)
             {
-                var productPicture = query.Find(item.Id);
+                var productPicture = query.Find(item.IdPicture);
                 _context.Pictures.Remove(productPicture);
             }
             _context.SaveChanges();

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Estore.Application.DataTransfer;
+using Estore.Application.Exceptions;
 using Estore.Application.Queries;
 using Estore.DataAccess;
+using Estore.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,7 +32,10 @@ namespace Estore.Implementation.Queries
             var orders = _context.Orders.Include(o => o.OrderLines).Include(o => o.User).AsQueryable().IgnoreQueryFilters();
 
             var order = orders.Where(o => o.Id == search).FirstOrDefault();
-
+            if(order == null)
+            {
+                throw new EntityNotFoundException(search, typeof(Order));
+            }
             return _mapper.Map<OrderWithUserDataDto>(order);
         }
     }

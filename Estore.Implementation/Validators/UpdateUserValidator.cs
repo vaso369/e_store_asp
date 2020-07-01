@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Estore.Implementation.Validators
 {
-    public class UpdateUserValidator : AbstractValidator<UserDto>
+    public class UpdateUserValidator : AbstractValidator<UserPutDto>
     {
         public UpdateUserValidator()
         {

@@ -46,13 +46,17 @@ namespace Estore.Api.Core
             services.AddTransient<IGetOneOrderQuery, EFGetOneOrderQuery>();
             services.AddTransient<IGetOrdersQuery, EFGetOrdersQuery>();
             services.AddTransient<IGetCategoriesQuery, EFGetCategoriesQuery>();
+            services.AddTransient<IGetLogsQuery, EFGetoLogsQuery>();
             services.AddTransient<CreateRoleValidator>();
             services.AddTransient<CreateUserValidator>();
             services.AddTransient<CreateCategoryValidator>();
             services.AddTransient<CreateProductValidator>();
+            services.AddTransient<CreateOrderValidator>();
             services.AddTransient<UpdateProductValidator>();
             services.AddTransient<UpdateUserValidator>();
-            services.AddTransient<CreateOrderValidator>();
+            services.AddTransient<UpdateCategoryValidator>();
+            services.AddTransient<UpdateRoleValidator>();
+            
         }
         public static void AddApplicationActor(this IServiceCollection services)
         {
