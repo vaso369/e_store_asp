@@ -18,7 +18,7 @@ namespace Estore.Implementation.Email
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("vasilije.vasilijevic.11.17@ict.edu.rs", "7LdxCBun420")
+                Credentials = new NetworkCredential("createamserbia@gmail.com", "sGye4jY&kR0c")
             };
 
             var message = new MailMessage("vasilije.vasilijevic.11.17@ict.edu.rs", dto.SendTo);
